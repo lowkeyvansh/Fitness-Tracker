@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Client</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Email Client</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/send">Compose</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section id="emails">
+            <h2>Inbox</h2>
+            <div class="email-list">
+                {% for email in emails %}
+                <div class="email">
+                    <h3>{{ email.subject }}</h3>
+                    <p>From: {{ email.sender }}</p>
+                    <p>To: {{ email.recipient }}</p>
+                    <p>{{ email.body }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Email Client</p>
+    </footer>
+</body>
+</html>
